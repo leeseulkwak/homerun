@@ -1,6 +1,7 @@
 import { getMyProfile } from "@/lib/data/profile";
 import { formatDistance, formatDuration, formatRelativeTime } from "@/lib/geo";
 import { WORKOUT_TYPE_META } from "@/lib/workoutMeta";
+import WorkoutCalendar from "@/components/profile/WorkoutCalendar";
 
 export default async function ProfilePage() {
   const { profile, workouts, totalDistanceM, totalDurationS, workoutCount } = await getMyProfile();
@@ -29,6 +30,8 @@ export default async function ProfilePage() {
           </div>
         </div>
       </div>
+
+      <WorkoutCalendar workouts={workouts} />
 
       <h3 className="mb-2 text-sm font-semibold text-zinc-700">내 기록</h3>
       {workouts.length === 0 ? (

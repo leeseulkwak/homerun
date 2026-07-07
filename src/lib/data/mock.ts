@@ -128,6 +128,30 @@ const workoutsBase: Omit<Workout, "author" | "likeCount" | "likedByMe" | "commen
     startedAt: hoursAgo(50),
     endedAt: hoursAgo(50 - 0.55),
   },
+  {
+    id: "w6",
+    userId: DEMO_USER_ID,
+    apartmentComplexId: DEMO_APARTMENT_COMPLEX_ID,
+    type: "walk",
+    route: genRoute(37.498, 127.0275, 25),
+    distanceM: 2600,
+    durationS: 1800,
+    avgPaceSecPerKm: Math.round(1800 / 2.6),
+    startedAt: hoursAgo(4 * 24 + 2),
+    endedAt: hoursAgo(4 * 24 + 1.5),
+  },
+  {
+    id: "w7",
+    userId: DEMO_USER_ID,
+    apartmentComplexId: DEMO_APARTMENT_COMPLEX_ID,
+    type: "run",
+    route: genRoute(37.4975, 127.0285, 45),
+    distanceM: 6100,
+    durationS: 1980,
+    avgPaceSecPerKm: Math.round(1980 / 6.1),
+    startedAt: hoursAgo(9 * 24 + 5),
+    endedAt: hoursAgo(9 * 24 + 4.4),
+  },
 ];
 
 const savedWorkouts: Workout[] = [];
