@@ -8,7 +8,7 @@ import { WORKOUT_TYPE_META } from "@/lib/workoutMeta";
 import { saveWorkoutAction } from "@/lib/data/workouts";
 import type { WorkoutType } from "@/lib/data/types";
 
-const TYPES: WorkoutType[] = ["walk", "run", "hike"];
+const TYPES: WorkoutType[] = ["walk", "run"];
 
 export default function TrackPage() {
   const [type, setType] = useState<WorkoutType>("run");

@@ -108,7 +108,7 @@ const workoutsBase: Omit<Workout, "author" | "likeCount" | "likedByMe" | "commen
     id: "w4",
     userId: "u4",
     apartmentComplexId: DEMO_APARTMENT_COMPLEX_ID,
-    type: "hike",
+    type: "walk",
     route: genRoute(37.5, 127.03, 60),
     distanceM: 7800,
     durationS: 6300,

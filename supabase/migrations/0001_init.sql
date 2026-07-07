@@ -17,7 +17,7 @@ create table profiles (
   created_at timestamptz not null default now()
 );
 
-create type workout_type as enum ('walk', 'run', 'hike');
+create type workout_type as enum ('walk', 'run');
 
 create table workouts (
   id uuid primary key default gen_random_uuid(),

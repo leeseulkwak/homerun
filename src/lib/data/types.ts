@@ -1,4 +1,4 @@
-export type WorkoutType = "walk" | "run" | "hike";
+export type WorkoutType = "walk" | "run";
 
 export interface RoutePoint {
   lat: number;
