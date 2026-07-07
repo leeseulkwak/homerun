@@ -1,5 +1,3 @@
-export type WorkoutType = "walk" | "run";
-
 export interface RoutePoint {
   lat: number;
   lng: number;
@@ -25,7 +23,6 @@ export interface Workout {
   id: string;
   userId: string;
   apartmentComplexId: string;
-  type: WorkoutType;
   route: RoutePoint[];
   distanceM: number;
   durationS: number;

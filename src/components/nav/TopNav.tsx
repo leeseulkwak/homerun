@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const TABS = [
-  { href: "/", label: "피드", icon: "🏘️" },
   { href: "/track", label: "기록하기", icon: "🏃" },
+  { href: "/", label: "피드", icon: "🏘️" },
   { href: "/ranking", label: "랭킹", icon: "🏆" },
   { href: "/challenges", label: "챌린지", icon: "🎯" },
   { href: "/profile", label: "마이", icon: "👤" },

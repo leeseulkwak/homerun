@@ -4,11 +4,9 @@ import { useState, useTransition } from "react";
 import { addCommentAction, toggleLikeAction } from "@/lib/data/feed";
 import type { Workout } from "@/lib/data/types";
 import { formatDistance, formatDuration, formatPace, formatRelativeTime } from "@/lib/geo";
-import { WORKOUT_TYPE_META } from "@/lib/workoutMeta";
 import RoutePreview from "@/components/track/RoutePreview";
 
 export default function WorkoutCard({ workout }: { workout: Workout }) {
-  const meta = WORKOUT_TYPE_META[workout.type];
   const [likeCount, setLikeCount] = useState(workout.likeCount);
   const [likedByMe, setLikedByMe] = useState(workout.likedByMe);
   const [showComments, setShowComments] = useState(false);
@@ -39,21 +37,16 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
 
   return (
     <article className="mb-3 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-lg">
-            {meta.icon}
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-zinc-900">{workout.author.nickname}</p>
-            <p className="text-xs text-zinc-500">
-              {workout.author.dong} · {formatRelativeTime(workout.startedAt)}
-            </p>
-          </div>
+      <div className="flex items-center gap-2">
+        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-lg">
+          🏃
         </div>
-        <span className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700">
-          {meta.label}
-        </span>
+        <div>
+          <p className="text-sm font-semibold text-zinc-900">{workout.author.nickname}</p>
+          <p className="text-xs text-zinc-500">
+            {workout.author.dong} · {formatRelativeTime(workout.startedAt)}
+          </p>
+        </div>
       </div>
 
       <div className="mt-3">

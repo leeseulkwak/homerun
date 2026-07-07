@@ -5,10 +5,9 @@ import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 import * as mock from "./mock";
 import { getViewerContext } from "./session";
-import type { RoutePoint, Workout, WorkoutType } from "./types";
+import type { RoutePoint, Workout } from "./types";
 
 export interface NewWorkoutInput {
-  type: WorkoutType;
   route: RoutePoint[];
   distanceM: number;
   durationS: number;
@@ -40,7 +39,6 @@ export async function saveWorkoutAction(input: NewWorkoutInput): Promise<void> {
     await supabase.from("workouts").insert({
       user_id: userId,
       apartment_complex_id: apartmentComplexId,
-      type: input.type,
       route: input.route,
       distance_m: Math.round(input.distanceM),
       duration_s: Math.round(input.durationS),

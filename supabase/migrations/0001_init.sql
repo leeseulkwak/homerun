@@ -17,13 +17,10 @@ create table profiles (
   created_at timestamptz not null default now()
 );
 
-create type workout_type as enum ('walk', 'run');
-
 create table workouts (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references profiles (id) on delete cascade,
   apartment_complex_id uuid references apartment_complexes (id),
-  type workout_type not null,
   route jsonb not null default '[]', -- [{ lat, lng, t }]
   distance_m integer not null,
   duration_s integer not null,

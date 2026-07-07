@@ -18,7 +18,7 @@ export async function getFeed(): Promise<Workout[]> {
   const { data, error } = await supabase
     .from("workouts")
     .select(
-      "id, user_id, apartment_complex_id, type, route, distance_m, duration_s, avg_pace_sec_per_km, started_at, ended_at, profiles(nickname, avatar_url, dong), workout_likes(user_id), workout_comments(id, user_id, body, created_at, profiles(nickname))"
+      "id, user_id, apartment_complex_id, route, distance_m, duration_s, avg_pace_sec_per_km, started_at, ended_at, profiles(nickname, avatar_url, dong), workout_likes(user_id), workout_comments(id, user_id, body, created_at, profiles(nickname))"
     )
     .eq("apartment_complex_id", apartmentComplexId)
     .order("started_at", { ascending: false });
@@ -30,7 +30,6 @@ export async function getFeed(): Promise<Workout[]> {
     id: w.id,
     userId: w.user_id,
     apartmentComplexId: w.apartment_complex_id,
-    type: w.type,
     route: w.route,
     distanceM: w.distance_m,
     durationS: w.duration_s,

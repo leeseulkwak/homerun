@@ -29,7 +29,7 @@ export async function getMyProfile(): Promise<MyProfileData> {
       supabase.from("profiles").select("id, nickname, avatar_url, apartment_complex_id, dong").eq("id", userId).maybeSingle(),
       supabase
         .from("workouts")
-        .select("id, user_id, apartment_complex_id, type, route, distance_m, duration_s, avg_pace_sec_per_km, started_at, ended_at")
+        .select("id, user_id, apartment_complex_id, route, distance_m, duration_s, avg_pace_sec_per_km, started_at, ended_at")
         .eq("user_id", userId)
         .order("started_at", { ascending: false }),
     ]);
@@ -48,7 +48,6 @@ export async function getMyProfile(): Promise<MyProfileData> {
       id: w.id,
       userId: w.user_id,
       apartmentComplexId: w.apartment_complex_id,
-      type: w.type,
       route: w.route,
       distanceM: w.distance_m,
       durationS: w.duration_s,

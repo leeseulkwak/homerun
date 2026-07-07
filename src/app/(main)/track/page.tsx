@@ -4,14 +4,9 @@ import { useState, useTransition } from "react";
 import { useGeoTracker } from "@/hooks/useGeoTracker";
 import RoutePreview from "@/components/track/RoutePreview";
 import { formatDistance, formatDuration, formatPace } from "@/lib/geo";
-import { WORKOUT_TYPE_META } from "@/lib/workoutMeta";
 import { saveWorkoutAction } from "@/lib/data/workouts";
-import type { WorkoutType } from "@/lib/data/types";
-
-const TYPES: WorkoutType[] = ["walk", "run"];
 
 export default function TrackPage() {
-  const [type, setType] = useState<WorkoutType>("run");
   const [startedAt, setStartedAt] = useState<string | null>(null);
   const [isSaving, startSaving] = useTransition();
   const tracker = useGeoTracker();
@@ -26,7 +21,6 @@ export default function TrackPage() {
   function handleSave() {
     startSaving(() => {
       saveWorkoutAction({
-        type,
         route: tracker.route,
         distanceM: tracker.distanceM,
         durationS: tracker.durationS,
@@ -39,24 +33,6 @@ export default function TrackPage() {
 
   return (
     <div className="flex flex-col gap-4 px-4 py-3">
-      {tracker.status === "idle" && (
-        <div className="flex gap-2">
-          {TYPES.map((t) => (
-            <button
-              key={t}
-              onClick={() => setType(t)}
-              className={`flex-1 rounded-full border px-3 py-2 text-sm font-medium ${
-                type === t
-                  ? "border-emerald-600 bg-emerald-600 text-white"
-                  : "border-zinc-200 bg-white text-zinc-600"
-              }`}
-            >
-              {WORKOUT_TYPE_META[t].icon} {WORKOUT_TYPE_META[t].label}
-            </button>
-          ))}
-        </div>
-      )}
-
       <RoutePreview route={tracker.route} height={220} />
 
       {tracker.error && (

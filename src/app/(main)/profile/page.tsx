@@ -1,6 +1,5 @@
 import { getMyProfile } from "@/lib/data/profile";
-import { formatDistance, formatDuration, formatRelativeTime } from "@/lib/geo";
-import { WORKOUT_TYPE_META } from "@/lib/workoutMeta";
+import { formatDistance, formatDuration, formatPace, formatRelativeTime } from "@/lib/geo";
 import WorkoutCalendar from "@/components/profile/WorkoutCalendar";
 
 export default async function ProfilePage() {
@@ -44,9 +43,9 @@ export default async function ProfilePage() {
               className="flex items-center justify-between rounded-xl border border-zinc-200 bg-white px-4 py-3"
             >
               <div className="flex items-center gap-2">
-                <span>{WORKOUT_TYPE_META[w.type].icon}</span>
+                <span>🏃</span>
                 <div>
-                  <p className="text-sm font-medium text-zinc-900">{WORKOUT_TYPE_META[w.type].label}</p>
+                  <p className="text-sm font-medium text-zinc-900">{formatPace(w.avgPaceSecPerKm)}</p>
                   <p className="text-xs text-zinc-500">{formatRelativeTime(w.startedAt)}</p>
                 </div>
               </div>

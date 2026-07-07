@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Workout } from "@/lib/data/types";
-import { formatDistance } from "@/lib/geo";
-import { WORKOUT_TYPE_META } from "@/lib/workoutMeta";
+import { formatDistance, formatPace } from "@/lib/geo";
 
 const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -121,9 +120,7 @@ export default function WorkoutCalendar({ workouts }: { workouts: Workout[] }) {
           ) : (
             selectedWorkouts.map((w) => (
               <div key={w.id} className="flex items-center justify-between text-sm">
-                <span>
-                  {WORKOUT_TYPE_META[w.type].icon} {WORKOUT_TYPE_META[w.type].label}
-                </span>
+                <span>🏃 {formatPace(w.avgPaceSecPerKm)}</span>
                 <span className="font-semibold text-emerald-700">{formatDistance(w.distanceM)}</span>
               </div>
             ))
